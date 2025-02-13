@@ -20,7 +20,6 @@ process CallPeaks {
   """
   # Call peaks with MACS2
   macs2 callpeak \
-  --format BAM \
   --gsize ${params.genome_size} \
   --name ${sample_id} \
   ${params.macs2_options} \
