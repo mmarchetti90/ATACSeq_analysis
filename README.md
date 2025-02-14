@@ -3,9 +3,31 @@
 
 /// --------------------------------------- //
 
+### OVERVIEW:
+
+* Reads trimming (TrimGalore!)
+
+* Aligment (BWA)
+
+* Deduplication (Picard)
+
+* Removal of Mitochondrial reads (samtools)
+
+* Peak calling (MACS3)
+
+* Peak annotation (HOMER)
+
+* Peak consensus across samples (bedtools merge)
+
+* Peak counting (featureCounts)
+
+/// --------------------------------------- //
+
 ### RUN COMMAND:
 
 nextflow run [OPTIONS] --sample_reads_list_path "/path/to/sample/reads/list" main.nf
+
+/// --------------------------------------- //
 
 ### OPTIONS: (See config file for more)
 
@@ -24,6 +46,8 @@ nextflow run [OPTIONS] --sample_reads_list_path "/path/to/sample/reads/list" mai
 --control_reads_list_path
 
 		Path to tsv file manifest of controls, with columns SampleID, Mate1, and Mate2.
+		Sample IDs must match those in the manifest of samples, but with the addition of the suffix
+		"_CONTROL" (e.g. SAMPLE1_CONTROL for the control of SAMPLE1)
 		Must be specified if profile = "with_ctrls"
 
 --trimgalore_params
@@ -46,27 +70,29 @@ nextflow run [OPTIONS] --sample_reads_list_path "/path/to/sample/reads/list" mai
 
 		featureCounts strandedness.
     	Possible values: 0 = unstranded, 1 = stranded, 2 = reversestrand.
-    	(Default, 1)
+    	(Default, 0)
 
 /// --------------------------------------- ///
 
 ### DEPENDENCIES:
 
-Nextflow 20.10+
+Nextflow 24.10.2+
 
 bedtools 2.31.1+
 
-bwa 0.7.17+
+bwa 0.7.18+
 
-homer 4.11+
+homer 5.1+
 
-macs2 2.2.9.1+
+macs2 3.0.2+
 
-picard 2.27.5+
+picard 3.3.0+
 
-samtools 1.18+
+samtools 1.21+
 
-subread 2.0.6+
+Singularity 4.1.1+
+
+subread 2.0.8+
 
 trim-galore 0.6.10+ &
 
@@ -79,3 +105,7 @@ Python 3.9.7+ &
 	pandas
 
 /// --------------------------------------- ///
+
+### NOTES:
+
+* Can be used for other chromatin analysis techniques (e.g. ChIP-Seq, Cut&Tag, etc) by modifying MACS3 options.

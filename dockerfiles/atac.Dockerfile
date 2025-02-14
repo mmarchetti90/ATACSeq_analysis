@@ -18,14 +18,14 @@ RUN conda install -y mamba
 # Installing software
 RUN mamba install -y \
     bedtools=2.31.1 \
-    bwa=0.7.17 \
-    homer=4.11 \
-    macs2=2.2.9.1 \
+    bwa=0.7.18 \
+    homer=5.1 \
+    macs3=3.0.2 \
     numpy \
     pandas \
-    picard=2.27.5 \
-    samtools=1.18 \
-    subread=2.0.6 \
+    picard=3.3.0 \
+    samtools=1.21 \
+    subread=2.0.8 \
     trim-galore=0.6.10 && \
     conda clean -afty
 

@@ -4,7 +4,7 @@
 include { PREPROCESS as PREPROCESS_SAMPLES } from '../subworkflows/preprocess.nf'
 include { PREPROCESS as PREPROCESS_CONTROLS } from '../subworkflows/preprocess.nf'
 include { GenerateBwaIndex } from '../modules/bwa/build_bwa_index.nf'
-include { CallPeaks } from '../modules/macs2/call_peaks_with_ctrl.nf'
+include { CallPeaks } from '../modules/macs3/call_peaks_with_ctrl.nf'
 include { AnnotatePeaks } from '../modules/homer/annotate_peaks.nf'
 include { CreateConsensus } from '../modules/consensus/peaks_consensus.nf'
 include { CountPeaks } from '../modules/counting/count_peaks.nf'

@@ -1,0 +1,4 @@
+SampleID	Mate1	Mate2
+sample_1_CONTROL	/path/to/sample1/control/r1	/path/to/sample1/control/r2
+sample_2_CONTROL	/path/to/sample2/control/r1	/path/to/sample2/control/r2
+sample_3_CONTROL	/path/to/sample3/control/r1	/path/to/sample3/control/r2

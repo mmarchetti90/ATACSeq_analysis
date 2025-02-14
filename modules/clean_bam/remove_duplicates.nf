@@ -14,12 +14,22 @@ process RemoveDuplicates {
   path "${sample_id}_dedup_metrics.txt", emit: dedup_metrics
 
   """
+  # Add/replace read groups for MarkDuplicates
+  picard AddOrReplaceReadGroups \
+  --INPUT ${bam} \
+  --OUTPUT temp_rdup.bam \
+  --RGID 1 \
+  --RGLB library1 \
+  --RGPU unit1 \
+  --RGPL ILLUMINA \
+  --RGSM ${sample_id}
+
   # Mark and remove duplicate reads
   picard \
   MarkDuplicates \
   --REMOVE_DUPLICATES true \
   --ASSUME_SORT_ORDER coordinate \
-  --INPUT ${bam} \
+  --INPUT temp_rdup.bam \
   --OUTPUT ${sample_id}_dedup.bam \
   --REFERENCE_SEQUENCE ${genome_fasta} \
   --METRICS_FILE ${sample_id}_dedup_metrics.txt
